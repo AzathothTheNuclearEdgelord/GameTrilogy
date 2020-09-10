@@ -9,23 +9,35 @@ public class PaddleMovement : MonoBehaviour
     private float movement;
     public int speed = 10;
 
-    private void Start()
+    void Update()
     {
+        LocationLimitor();
+        DirectionSelector();
+        transform.position = transform.position + new Vector3(0, movement, 0) * Time.deltaTime * speed;
     }
 
-    void Update()
+    void DirectionSelector()
     {
         if (isLeft == true)
         {
-            print("Left paddle selected");
             movement = Input.GetAxis("VerticalLeft");
         }
         else
         {
-            print("Right paddle selected");
             movement = Input.GetAxis("VerticalRight");
         }
-        transform.position = transform.position + new Vector3(0, movement, 0) * Time.deltaTime * speed;
+    }
+
+    void LocationLimitor()
+    {
+        if (transform.position.y > 4)
+        {
+           transform.position = new Vector3(transform.position.x, 4, 0); 
+        }
         
+        if (transform.position.y < -4)
+        {
+           transform.position = new Vector3(transform.position.x, -4, 0); 
+        }
     }
 }
