@@ -28,6 +28,17 @@ public class BallMovement : MonoBehaviour
 
     private void DeathTrigger()
     {
-        
+        switch (transform.position.x)
+        {
+            case 5:
+               PositionReset();
+                return;
+
+        }
+    }
+
+    private void PositionReset()
+    {
+        transform.position = new Vector3(0, 0, 0);
     }
 }
