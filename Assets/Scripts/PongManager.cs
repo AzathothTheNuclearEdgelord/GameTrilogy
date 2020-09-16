@@ -11,6 +11,8 @@ public class PongManager : MonoBehaviour
 
     public Text rightText;
     public Text leftText;
+    public static bool leftScoreIncrease;
+    public static bool rightScoreIncrease;
 
     public GameObject Ball;
 
@@ -25,26 +27,26 @@ public class PongManager : MonoBehaviour
         print(leftScore);
         print(rightScore);
         */
+        rightText.text = rightScore.ToString();
+        leftText.text = leftScore.ToString();
 
-        if (Ball.transform.position.x >= 8) 
-        {
+        if (leftScoreIncrease == true)
             LeftScoreIncrease();
-        }
-        if (Ball.transform.position.x <= -8) 
-        {
+        if (rightScoreIncrease == true)
             RightScoreIncrease();
-        }
     }
 
-    public void LeftScoreIncrease()
+    private void LeftScoreIncrease()
     {
         leftScore++;
         leftText.text = leftScore.ToString();
+        leftScoreIncrease = false;
     }
 
-    public void RightScoreIncrease()
+    private void RightScoreIncrease()
     {
         rightScore++;
         rightText.text = rightScore.ToString();
+        rightScoreIncrease = false;
     }
 }

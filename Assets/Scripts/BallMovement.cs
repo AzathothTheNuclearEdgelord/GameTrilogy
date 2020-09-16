@@ -31,14 +31,14 @@ public class BallMovement : MonoBehaviour
     {
         if (transform.position.x >= 9)
         {
-                print("Left score increase");
-                PositionReset();
+            PongManager.rightScoreIncrease = true;
+            PositionReset();
         }
 
         if (transform.position.x <= -9)
         {
-                print("Right score increase");
-                PositionReset();
+            PongManager.leftScoreIncrease = true;
+            PositionReset();
         }
     }
 
