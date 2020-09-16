@@ -16,13 +16,7 @@ public class ArkanoidManager : MonoBehaviour
             spawnPos = new Vector2(-8.25f, spawnPos.y -1 );
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Delegated this to a different function probably because I am working somewhat inconsistently
     void SpawnRow()
     {
             for (int i = 0; i < 12; i++)
