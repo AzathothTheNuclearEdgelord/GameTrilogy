@@ -16,9 +16,12 @@ public class BallMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        
         if (other.gameObject.tag == "Wall")
         {
             speedY = -speedY;
+            speedX *= 1.02f;
+            speedY *= 1.02f;
         }
         
         if (other.gameObject.tag == "Paddle")
@@ -44,6 +47,16 @@ public class BallMovement : MonoBehaviour
 
     private void PositionReset()
     {
+        if (speedX < 0)
+            speedX = -5;
+        else
+            speedX = 5;
+
+        if (speedY < 0)
+            speedY = -5;
+        else
+            speedY = 5;
+        
         transform.position = new Vector3(0, 0, 0);
     }
 }
