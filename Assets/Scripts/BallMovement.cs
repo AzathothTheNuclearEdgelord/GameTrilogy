@@ -11,6 +11,7 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         transform.Translate(speedX * Time.deltaTime, speedY * Time.deltaTime, 0);
+        DeathTrigger();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -28,12 +29,16 @@ public class BallMovement : MonoBehaviour
 
     private void DeathTrigger()
     {
-        switch (transform.position.x)
+        if (transform.position.x >= 9)
         {
-            case 5:
-               PositionReset();
-                return;
+                print("Left score increase");
+                PositionReset();
+        }
 
+        if (transform.position.x <= -9)
+        {
+                print("Right score increase");
+                PositionReset();
         }
     }
 
